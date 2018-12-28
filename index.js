@@ -42,7 +42,7 @@ client.on('message', function (topic, message){
 });
 
 // set port
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 
 // listen on port
 app.listen(port);
