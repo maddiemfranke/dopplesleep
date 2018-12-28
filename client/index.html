@@ -1,0 +1,30 @@
+<html ng-app="dopplesleep">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+    <title>DoppleSleep</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+      html 					{ overflow-y:scroll; }
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+      <div id="nav-bar">
+        <h1><a href="#">DoppleSleep</a></h1>
+      </div>
+      <div id="button-container">
+          <!-- <button><a href='#/registerDevice' class="btn btn-primary btn-lg active top-nav-button" id="button1">Register a Device</a></button> -->
+          <button><a href='#/query' class="btn btn-primary btn-lg active top-nav-button" id="button2">Retrieve Device Data</a></button>
+      </div>
+    <div ng-view></div>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.3/ui-bootstrap-tpls.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+      <script src="datapoints/datapoints.js"></script>
+      <script src="services/services.js"></script>
+      <script src="app.js"></script>
+    </div>
+  </body>
+</html>

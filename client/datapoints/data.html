@@ -1,0 +1,23 @@
+<!-- data display page -->
+
+<div class="data contents-container">
+  <h3> Device Data </h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Device ID</th>
+        <th>qData</th>
+        <th>iData</th>
+        <th>Time Stamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="datapoint in data.datapoints" >
+        <td>{{ datapoint.deviceID }}</td>
+        <td>{{ datapoint.qData }}</td>
+        <td>{{ datapoint.iData }}</td>
+        <td>{{ datapoint.time }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
