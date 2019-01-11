@@ -14,8 +14,8 @@
       <div id="nav-bar">
         <h1><a href="#">DoppleSleep</a></h1>
       </div>
-      <div id="button-container">
-          <!-- <button><a href='#/registerDevice' class="btn btn-primary btn-lg active top-nav-button" id="button1">Register a Device</a></button> -->
+      <div id="button-container" ng-controller="DataController">
+          <button><a href='#/registerDevice' class="btn btn-primary btn-lg active top-nav-button" id="button1">Register a Device</a></button>
           <button><a href='#/query' class="btn btn-primary btn-lg active top-nav-button" id="button2">Retrieve Device Data</a></button>
       </div>
     <div ng-view></div>

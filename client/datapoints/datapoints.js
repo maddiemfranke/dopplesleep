@@ -1,6 +1,6 @@
 angular.module("dopplesleep.datapoints", [])
 
-.controller("DataController", function ($scope, DataPoints, Devices) {
+.controller("DataController", function ($scope, DataPoints) {
 
   $scope.ssid = {};
   $scope.password = {};
@@ -12,7 +12,6 @@ angular.module("dopplesleep.datapoints", [])
     DataPoints.getData($scope.formData.text)
     .then(function(dopplesleeps){
       $scope.data.datapoints = dopplesleeps;
-      console.log($scope.data.datapoints);
       var itemsFormatted = [];
       $scope.data.datapoints.forEach((dopplesleep) => {
           itemsFormatted.push({
@@ -25,6 +24,8 @@ angular.module("dopplesleep.datapoints", [])
       var headers = {
           qData: "qData",
           iData: "iData",
+          LIDAR1: "LIDAR1",
+          LIDAR2: "LIDAR2",
           time: "Time Stamp",
           deviceID: "Device ID"
       };
@@ -37,17 +38,24 @@ angular.module("dopplesleep.datapoints", [])
     .catch(function(error){
       console.log('ERROR: ', error);
     })
-  }
+  };
 
   $scope.registerDevice = function() {
-    Devices.registerDevice($scope.ssid.text, $scope.password.text, $scope.deviceID.text)
-    console.log('here');
+    var ssid = $scope.ssid.text;
+    var password = $scope.password.text;
+    var deviceID = $scope.deviceID.text;
+    if($scope.ssid.text.length > 0 && $scope.password.text.length > 0 && $scope.deviceID.text.length > 0){
+      setDeviceParams(ssid, password, deviceID);
+    }
     $scope.ssid = {};
     $scope.password = {};
     $scope.deviceID = {};
-  }
+  };
+})
 
-});
+function setDeviceParams(ssid, password, deviceID) {
+  console.log('oops');
+}
 
 function convertToCSV(objArray) {
     var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;

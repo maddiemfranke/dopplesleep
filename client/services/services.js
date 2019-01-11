@@ -15,15 +15,3 @@ angular.module("dopplesleep.services",[])
     getData: getData,
   }
 })
-
-.factory("Devices", function($http) {
-  // set the device variables
-  var registerDevice = function (ssid, password, deviceID) {
-    console.log(ssid);
-    console.log(password);
-    console.log(deviceID);
-  }
-  return {
-    registerDevice: registerDevice,
-  }
-})

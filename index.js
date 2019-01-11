@@ -21,8 +21,6 @@ mongoose.connection.on('connected', function () {
         console.log("Found Records : " + count);
     }
   });
-  //mongoose.connection.db.dropCollection('dopplesleeps');
-
 });
 
 client.on('connect', function () {
@@ -36,8 +34,10 @@ client.on('message', function (topic, message){
   DoppleSleep.create({
       qData : parsedData[0],
       iData : parsedData[1],
-      time : parsedData[2],
-      deviceID : parsedData[3]
+      LIDAR1 : parsedData[2],
+      LIDAR2 : parsedData[3],
+      time : parsedData[4],
+      deviceID : parsedData[5]
   });
 });
 
@@ -58,12 +58,18 @@ function parseDataPoint(message){
   var secondComma = message.indexOf(',', firstComma+1);
   var iData = message.substring(firstComma+1, secondComma);
   var thirdComma = message.indexOf(',', secondComma+1);
-  var timeStamp = message.substring(secondComma+1, thirdComma);
+  var LIDAR1 = message.substring(secondComma+1, thirdComma);
   var fourthComma = message.indexOf(',', thirdComma+1);
-  var sampleNum = message.substring(thirdComma+1, fourthComma);
-  var deviceID = message.substring(fourthComma+1);
+  var LIDAR2 = message.substring(thirdComma+1, fourthComma);
+  var fifthComma = message.indexOf(',', fourthComma+1);
+  var timeStamp = message.substring(fourthComma+1, fifthComma);
+  var sixthComma = message.indexOf(',', fifthComma+1);
+  var sampleNum = message.substring(fifthComma+1, sixthComma);
+  var deviceID = message.substring(sixthComma+1);
   parsedData.push(parseInt(qData));
   parsedData.push(parseInt(iData));
+  parsedData.push(parseInt(LIDAR1));
+  parsedData.push(parseInt(LIDAR2));
   parsedData.push(parseInt(timeStamp));
   parsedData.push(parseInt(deviceID));
   return parsedData;
